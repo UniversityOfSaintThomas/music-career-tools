@@ -1,0 +1,963 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Music Career Business Model Canvas</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Open+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        :root {
+            --music-purple: #8B5CF6;
+            --music-pink: #EC4899;
+            --music-blue: #3B82F6;
+            --music-orange: #F59E0B;
+            --music-green: #10B981;
+            --vinyl-black: #1F2937;
+            --stage-gold: #FBBF24;
+            --text-dark: #111827;
+            --text-medium: #6B7280;
+            --bg-light: #F9FAFB;
+            --border: #E5E7EB;
+        }
+        
+        body {
+            font-family: 'Open Sans', sans-serif;
+            background: linear-gradient(135deg, #1F2937 0%, #4B5563 50%, #1F2937 100%);
+            padding: 30px 20px;
+            min-height: 100vh;
+            position: relative;
+        }
+        
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: 
+                radial-gradient(circle at 20% 80%, rgba(139, 92, 246, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(236, 72, 153, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 50% 50%, rgba(59, 130, 246, 0.05) 0%, transparent 50%);
+            pointer-events: none;
+        }
+        
+        .container {
+            max-width: 1600px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, var(--music-purple) 0%, var(--music-pink) 100%);
+            padding: 40px 50px;
+            border-radius: 20px 20px 0 0;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .header::before {
+            content: '♪';
+            position: absolute;
+            font-size: 200px;
+            opacity: 0.1;
+            right: 50px;
+            top: -30px;
+            transform: rotate(-15deg);
+        }
+        
+        .header::after {
+            content: '♫';
+            position: absolute;
+            font-size: 150px;
+            opacity: 0.1;
+            left: 100px;
+            bottom: -40px;
+            transform: rotate(20deg);
+        }
+        
+        .header-content {
+            position: relative;
+            z-index: 2;
+        }
+        
+        .header h1 {
+            font-family: 'Montserrat', sans-serif;
+            color: white;
+            font-size: 3em;
+            font-weight: 800;
+            margin-bottom: 10px;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.2);
+        }
+        
+        .header-subtitle {
+            color: rgba(255,255,255,0.95);
+            font-size: 1.2em;
+            font-weight: 500;
+        }
+        
+        .header-tagline {
+            color: rgba(255,255,255,0.85);
+            font-size: 1em;
+            margin-top: 5px;
+        }
+        
+        .canvas-wrapper {
+            background: white;
+            padding: 50px;
+            border-radius: 0 0 20px 20px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+        }
+        
+        .info-banner {
+            background: linear-gradient(135deg, #6366F1 0%, #8B5CF6 100%);
+            color: white;
+            padding: 25px 35px;
+            border-radius: 15px;
+            margin-bottom: 40px;
+            display: flex;
+            align-items: flex-start;
+            gap: 20px;
+            box-shadow: 0 4px 15px rgba(139, 92, 246, 0.3);
+        }
+        
+        .info-banner-icon {
+            font-size: 2.5em;
+            flex-shrink: 0;
+        }
+        
+        .info-banner-text h3 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.3em;
+            margin-bottom: 8px;
+            font-weight: 700;
+        }
+        
+        .info-banner-text p {
+            line-height: 1.6;
+            opacity: 0.95;
+        }
+        
+        .canvas-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            grid-template-rows: repeat(3, auto);
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+        
+        .canvas-box {
+            background: var(--bg-light);
+            border: 3px solid var(--border);
+            border-radius: 15px;
+            padding: 25px;
+            min-height: 280px;
+            transition: all 0.3s ease;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .canvas-box:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+        }
+        
+        /* Specific grid positions and colors */
+        .key-partners {
+            grid-column: 1;
+            grid-row: 1 / 3;
+            border-color: var(--music-blue);
+        }
+        
+        .key-partners:hover {
+            border-color: var(--music-blue);
+            box-shadow: 0 10px 30px rgba(59, 130, 246, 0.3);
+        }
+        
+        .key-activities {
+            grid-column: 2;
+            grid-row: 1;
+            border-color: var(--music-green);
+        }
+        
+        .key-activities:hover {
+            border-color: var(--music-green);
+            box-shadow: 0 10px 30px rgba(16, 185, 129, 0.3);
+        }
+        
+        .value-propositions {
+            grid-column: 3;
+            grid-row: 1 / 3;
+            background: linear-gradient(135deg, rgba(139, 92, 246, 0.1) 0%, rgba(236, 72, 153, 0.1) 100%);
+            border: 4px solid;
+            border-image: linear-gradient(135deg, var(--music-purple), var(--music-pink)) 1;
+            box-shadow: 0 0 30px rgba(139, 92, 246, 0.2);
+        }
+        
+        .value-propositions:hover {
+            box-shadow: 0 10px 40px rgba(139, 92, 246, 0.4);
+            transform: translateY(-5px);
+        }
+        
+        .customer-relationships {
+            grid-column: 4;
+            grid-row: 1;
+            border-color: var(--music-orange);
+        }
+        
+        .customer-relationships:hover {
+            border-color: var(--music-orange);
+            box-shadow: 0 10px 30px rgba(245, 158, 11, 0.3);
+        }
+        
+        .customer-segments {
+            grid-column: 5;
+            grid-row: 1 / 3;
+            border-color: var(--music-pink);
+        }
+        
+        .customer-segments:hover {
+            border-color: var(--music-pink);
+            box-shadow: 0 10px 30px rgba(236, 72, 153, 0.3);
+        }
+        
+        .key-resources {
+            grid-column: 2;
+            grid-row: 2;
+            border-color: var(--music-green);
+        }
+        
+        .key-resources:hover {
+            border-color: var(--music-green);
+            box-shadow: 0 10px 30px rgba(16, 185, 129, 0.3);
+        }
+        
+        .channels {
+            grid-column: 4;
+            grid-row: 2;
+            border-color: var(--music-orange);
+        }
+        
+        .channels:hover {
+            border-color: var(--music-orange);
+            box-shadow: 0 10px 30px rgba(245, 158, 11, 0.3);
+        }
+        
+        .cost-structure {
+            grid-column: 1 / 4;
+            grid-row: 3;
+            border-color: #EF4444;
+        }
+        
+        .cost-structure:hover {
+            border-color: #EF4444;
+            box-shadow: 0 10px 30px rgba(239, 68, 68, 0.3);
+        }
+        
+        .revenue-streams {
+            grid-column: 4 / 6;
+            grid-row: 3;
+            border-color: var(--music-green);
+        }
+        
+        .revenue-streams:hover {
+            border-color: var(--music-green);
+            box-shadow: 0 10px 30px rgba(16, 185, 129, 0.3);
+        }
+        
+        .box-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 18px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid;
+        }
+        
+        .key-partners .box-header { border-bottom-color: var(--music-blue); }
+        .key-activities .box-header { border-bottom-color: var(--music-green); }
+        .value-propositions .box-header { border-bottom-color: var(--music-purple); }
+        .customer-relationships .box-header { border-bottom-color: var(--music-orange); }
+        .customer-segments .box-header { border-bottom-color: var(--music-pink); }
+        .key-resources .box-header { border-bottom-color: var(--music-green); }
+        .channels .box-header { border-bottom-color: var(--music-orange); }
+        .cost-structure .box-header { border-bottom-color: #EF4444; }
+        .revenue-streams .box-header { border-bottom-color: var(--music-green); }
+        
+        .box-icon {
+            font-size: 2.2em;
+            margin-right: 15px;
+            line-height: 1;
+        }
+        
+        .box-title {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.15em;
+            font-weight: 700;
+            color: var(--text-dark);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .box-subtitle {
+            font-size: 0.85em;
+            color: var(--text-medium);
+            margin-top: 5px;
+            font-weight: 500;
+        }
+        
+        textarea {
+            width: 100%;
+            flex: 1;
+            padding: 15px;
+            border: 2px solid var(--border);
+            border-radius: 10px;
+            font-family: 'Open Sans', sans-serif;
+            font-size: 0.95em;
+            resize: vertical;
+            min-height: 160px;
+            transition: all 0.2s ease;
+            background: white;
+            color: var(--text-dark);
+            line-height: 1.7;
+        }
+        
+        textarea:focus {
+            outline: none;
+            border-color: var(--music-purple);
+            box-shadow: 0 0 0 4px rgba(139, 92, 246, 0.1);
+        }
+        
+        textarea::placeholder {
+            color: #9CA3AF;
+            font-style: italic;
+        }
+        
+        .music-tips {
+            background: #FEF3C7;
+            border-left: 4px solid var(--stage-gold);
+            padding: 15px 20px;
+            border-radius: 8px;
+            margin-top: 15px;
+            font-size: 0.9em;
+            color: #78350F;
+        }
+        
+        .music-tips strong {
+            display: block;
+            margin-bottom: 8px;
+            color: #92400E;
+            font-weight: 600;
+        }
+        
+        .action-bar {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+            padding: 40px 0 20px;
+            border-top: 3px solid var(--border);
+        }
+        
+        .btn {
+            font-family: 'Montserrat', sans-serif;
+            padding: 16px 35px;
+            border: none;
+            border-radius: 12px;
+            font-size: 1em;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, var(--music-purple) 0%, var(--music-pink) 100%);
+            color: white;
+            box-shadow: 0 4px 20px rgba(139, 92, 246, 0.4);
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 30px rgba(139, 92, 246, 0.5);
+        }
+        
+        .btn-secondary {
+            background: white;
+            color: var(--music-purple);
+            border: 3px solid var(--music-purple);
+        }
+        
+        .btn-secondary:hover {
+            background: var(--music-purple);
+            color: white;
+            transform: translateY(-3px);
+        }
+        
+        .btn-danger {
+            background: #EF4444;
+            color: white;
+        }
+        
+        .btn-danger:hover {
+            background: #DC2626;
+            transform: translateY(-3px);
+        }
+        
+        .save-indicator {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: var(--music-green);
+            color: white;
+            padding: 15px 30px;
+            border-radius: 50px;
+            font-weight: 700;
+            font-family: 'Montserrat', sans-serif;
+            box-shadow: 0 6px 25px rgba(16, 185, 129, 0.4);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            pointer-events: none;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            z-index: 1000;
+        }
+        
+        .save-indicator.show {
+            opacity: 1;
+        }
+        
+        @media print {
+            body {
+                background: white;
+                padding: 0;
+            }
+            
+            body::before {
+                display: none;
+            }
+            
+            .action-bar, .info-banner, .save-indicator, .music-tips {
+                display: none;
+            }
+            
+            .canvas-wrapper {
+                box-shadow: none;
+                padding: 20px;
+            }
+            
+            .header {
+                background: linear-gradient(135deg, var(--music-purple) 0%, var(--music-pink) 100%);
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+            
+            textarea {
+                border: 2px solid #ccc;
+                min-height: 100px;
+            }
+            
+            .canvas-box {
+                page-break-inside: avoid;
+            }
+        }
+        
+        @media (max-width: 1400px) {
+            .canvas-grid {
+                gap: 15px;
+            }
+            
+            .canvas-box {
+                padding: 20px;
+                min-height: 250px;
+            }
+        }
+        
+        @media (max-width: 1200px) {
+            .canvas-grid {
+                grid-template-columns: 1fr 1fr;
+                grid-template-rows: auto;
+            }
+            
+            .canvas-box {
+                grid-column: auto !important;
+                grid-row: auto !important;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .canvas-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .header h1 {
+                font-size: 2em;
+            }
+            
+            .canvas-wrapper {
+                padding: 30px 20px;
+            }
+            
+            .btn {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="header-content">
+                <h1>🎵 Music Career Business Model Canvas</h1>
+                <p class="header-subtitle">Design Your Path in the Music Industry</p>
+                <p class="header-tagline">Map how you'll create, deliver, and capture value • Auto-saves every 30 seconds</p>
+            </div>
+        </div>
+        
+        <div class="canvas-wrapper">
+            <div class="info-banner">
+                <div class="info-banner-icon">🎸</div>
+                <div class="info-banner-text">
+                    <h3>Building a Sustainable Music Career</h3>
+                    <p>This canvas helps you think strategically about your music career as a business. Each section asks you to clarify how you'll create value for your audience, reach them effectively, and generate sustainable income while staying true to your artistic vision. Be specific about YOUR unique approach—there's no one-size-fits-all music career.</p>
+                </div>
+            </div>
+            
+            <div class="canvas-grid">
+                <!-- Key Partners -->
+                <div class="canvas-box key-partners">
+                    <div class="box-header">
+                        <div class="box-icon">🤝</div>
+                        <div>
+                            <div class="box-title">Key Partners</div>
+                            <div class="box-subtitle">Who helps you succeed?</div>
+                        </div>
+                    </div>
+                    <textarea id="key-partners" placeholder="Who are the essential collaborators and partners in your music career?
+
+Music Industry Examples:
+• Co-writers, producers, session musicians
+• Booking agents and tour managers
+• Independent venues and promoters  
+• Distribution partners (DistroKid, TuneCore, CD Baby)
+• PR firms and playlist curators
+• Music supervisors for sync licensing
+• Other artists for co-bills and collaboration
+• Studio owners and engineers
+• Visual artists for album art and branding
+• Management company or business manager"></textarea>
+                    <div class="music-tips">
+                        <strong>💡 Music Career Tip:</strong>
+                        Think beyond obvious partners. A relationship with a booking agent at a small venue can be more valuable early on than chasing big agencies. Focus on people who believe in your work and will grow with you.
+                    </div>
+                </div>
+                
+                <!-- Key Activities -->
+                <div class="canvas-box key-activities">
+                    <div class="box-header">
+                        <div class="box-icon">⚡</div>
+                        <div>
+                            <div class="box-title">Key Activities</div>
+                            <div class="box-subtitle">What must you do?</div>
+                        </div>
+                    </div>
+                    <textarea id="key-activities" placeholder="What are the most important activities that make your music career work?
+
+Music Industry Examples:
+• Songwriting and composing
+• Recording (home studio vs. professional studio)
+• Rehearsing and preparing for performances
+• Playing live shows (clubs, festivals, house concerts)
+• Creating content (TikTok, Instagram, YouTube)
+• Networking at industry events
+• Pitching songs for sync opportunities
+• Teaching lessons or workshops
+• Session work or production for other artists
+• Managing social media and fan engagement
+• Learning music business and negotiating deals"></textarea>
+                </div>
+                
+                <!-- Value Propositions -->
+                <div class="canvas-box value-propositions">
+                    <div class="box-header">
+                        <div class="box-icon">⭐</div>
+                        <div>
+                            <div class="box-title">Value Propositions</div>
+                            <div class="box-subtitle">Why do people care about YOUR music?</div>
+                        </div>
+                    </div>
+                    <textarea id="value-propositions" placeholder="What makes YOUR music and artistry unique? What do you offer that others don't?
+
+Think About:
+• Your distinctive sound, voice, or style
+• The emotions or experiences you create
+• The stories you tell or communities you represent
+• Your live performance energy and connection
+• Your authenticity and artistic vision
+• The problems you solve or needs you fulfill
+
+Examples:
+• "Honest storytelling about small-town life through indie folk that feels like sitting on a porch with a friend"
+• "High-energy Latin fusion that gets people dancing while celebrating my heritage"
+• "Accessible music education that demystifies jazz improvisation"
+• "Healing through sound: ambient compositions for meditation and wellness"
+• "Raw, unfiltered hip-hop that gives voice to experiences the industry ignores""></textarea>
+                    <div class="music-tips">
+                        <strong>🎯 This Is The Heart:</strong>
+                        If you can't clearly articulate what makes your music valuable to specific people, everything else will be harder. Don't say you're "genre-blending" or "unique"—everyone says that. Be specific about the actual experience you create.
+                    </div>
+                </div>
+                
+                <!-- Customer Relationships -->
+                <div class="canvas-box customer-relationships">
+                    <div class="box-header">
+                        <div class="box-icon">💬</div>
+                        <div>
+                            <div class="box-title">Customer Relationships</div>
+                            <div class="box-subtitle">How do you build fan loyalty?</div>
+                        </div>
+                    </div>
+                    <textarea id="customer-relationships" placeholder="How will you create and maintain relationships with your fans/audience?
+
+Music Industry Examples:
+• Direct engagement: responding to DMs and comments
+• Email newsletter with exclusive content/early access
+• Behind-the-scenes content showing creative process
+• Live Q&As on Instagram or Twitch
+• House concerts with intimate fan experiences
+• Discord server or private Facebook group
+• Patreon with tiered benefits (demos, video calls)
+• Meet & greets at shows
+• Collaborative projects (fan art, remix contests)
+• Regular livestreams
+• Personal thank-you messages to supporters
+• Exclusive merch for core fans"></textarea>
+                </div>
+                
+                <!-- Customer Segments -->
+                <div class="canvas-box customer-segments">
+                    <div class="box-header">
+                        <div class="box-icon">👥</div>
+                        <div>
+                            <div class="box-title">Customer Segments</div>
+                            <div class="box-subtitle">Who exactly are you serving?</div>
+                        </div>
+                    </div>
+                    <textarea id="customer-segments" placeholder="Who are your target audiences? Be VERY specific—you can't serve everyone.
+
+Music Industry Examples:
+• Demographics: Age, location, lifestyle
+• Psychographics: Values, interests, behaviors
+• Existing fan communities you connect to
+
+Be This Specific:
+• "25-40 year olds who listen to NPR, value authenticity, attend small venue shows in Minneapolis"
+• "High school band directors looking for contemporary charts"
+• "Indie game developers needing original soundtracks"  
+• "Wedding planners seeking live jazz ensembles"
+• "College students at DIY punk venues who value anti-corporate ethics"
+• "Music producers wanting vintage analog synth sounds"
+• "Parents seeking music education for kids ages 6-12""></textarea>
+                    <div class="music-tips">
+                        <strong>🎯 Niche Is Power:</strong>
+                        "Everyone who likes good music" is not a customer segment. The riches are in the niches. 500 true fans who will drive 2 hours to see you > 50,000 passive Spotify listeners.
+                    </div>
+                </div>
+                
+                <!-- Key Resources -->
+                <div class="canvas-box key-resources">
+                    <div class="box-header">
+                        <div class="box-icon">🔧</div>
+                        <div>
+                            <div class="box-title">Key Resources</div>
+                            <div class="box-subtitle">What do you need?</div>
+                        </div>
+                    </div>
+                    <textarea id="key-resources" placeholder="What resources are essential to deliver your value proposition?
+
+Music Industry Examples:
+PHYSICAL:
+• Instruments and performance gear
+• Home recording setup or studio access
+• Vehicle for touring
+• Merch inventory
+
+INTELLECTUAL:
+• Original catalog of songs
+• Your unique sound/voice/style
+• Industry knowledge and skills
+• Social media presence and branding
+
+HUMAN:
+• Your time and creative energy
+• Performance skills and stage presence
+• Relationships with industry contacts
+• Band members or collaborators
+
+FINANCIAL:
+• Savings for recording/marketing
+• Credit for equipment purchases
+• Grant funding or investor support"></textarea>
+                </div>
+                
+                <!-- Channels -->
+                <div class="canvas-box channels">
+                    <div class="box-header">
+                        <div class="box-icon">📢</div>
+                        <div>
+                            <div class="box-title">Channels</div>
+                            <div class="box-subtitle">How do you reach people?</div>
+                        </div>
+                    </div>
+                    <textarea id="channels" placeholder="How do you deliver your music and reach your audience?
+
+Music Industry Examples:
+DISTRIBUTION:
+• Spotify, Apple Music, Tidal, Bandcamp
+• Physical: vinyl, cassettes, CDs (direct or distro)
+• YouTube, SoundCloud for discovery
+
+PROMOTION:
+• Instagram, TikTok (where your audience lives)
+• Playlist pitching (editorial and independent)
+• Music blogs and online publications
+• Local radio or podcasts
+• Influencer/creator partnerships
+
+PERFORMANCE:
+• Local venues, regional touring circuit
+• House concerts and private events
+• Festivals and showcases  
+• Virtual concerts and livestreams
+• Session work at studios
+• Corporate events and weddings"></textarea>
+                </div>
+                
+                <!-- Cost Structure -->
+                <div class="canvas-box cost-structure">
+                    <div class="box-header">
+                        <div class="box-icon">💰</div>
+                        <div>
+                            <div class="box-title">Cost Structure</div>
+                            <div class="box-subtitle">What does it cost to build your career?</div>
+                        </div>
+                    </div>
+                    <textarea id="cost-structure" placeholder="What are your major expenses? Be realistic about costs.
+
+Music Industry Examples:
+FIXED COSTS (Monthly/Regular):
+• Rent (living + practice space)
+• Equipment payments/subscriptions
+• Distribution fees (DistroKid, etc.)
+• Website hosting, domain
+• Software subscriptions (DAW, plugins)
+• Insurance (equipment, health)
+• Storage for gear/inventory
+
+VARIABLE COSTS (Per Project/Show):
+• Studio time or home recording gear upgrades
+• Mixing and mastering
+• Session musicians
+• Music videos and photo shoots
+• Marketing and PR campaigns
+• Manufacturing (vinyl, merch)
+• Tour costs (gas, lodging, food)
+• Venue/agent commissions
+• Legal and accounting services"></textarea>
+                    <div class="music-tips">
+                        <strong>💰 Budget Reality Check:</strong>
+                        Most artists underestimate costs and overestimate revenue. Recording an EP can cost $500-5000+. A music video costs $500-10,000. Touring loses money for years. Plan accordingly and find creative low-cost alternatives.
+                    </div>
+                </div>
+                
+                <!-- Revenue Streams -->
+                <div class="canvas-box revenue-streams">
+                    <div class="box-header">
+                        <div class="box-icon">💵</div>
+                        <div>
+                            <div class="box-title">Revenue Streams</div>
+                            <div class="box-subtitle">How will you actually make money?</div>
+                        </div>
+                    </div>
+                    <textarea id="revenue-streams" placeholder="Where will your income come from? Diversification is key to sustainability.
+
+Music Industry Revenue Streams:
+PERFORMANCE:
+• Live show guarantees + door splits
+• Private events and corporate gigs
+• House concerts ($500-2000+)
+• Session work for other artists
+• Weddings and functions
+
+RECORDINGS:
+• Streaming royalties (modest but growing)
+• Physical sales (vinyl has highest margin)
+• Digital downloads (Bandcamp)
+• Sync licensing (TV, film, ads, games)
+• Producer fees for other artists
+
+DIRECT SUPPORT:
+• Patreon or membership tiers
+• Crowdfunding campaigns
+• Merchandise (t-shirts, posters)
+• VIP experiences and meet & greets
+
+EDUCATION:
+• Private lessons ($30-80/hour)
+• Group workshops and masterclasses
+• Online courses
+• School residencies"></textarea>
+                    <div class="music-tips">
+                        <strong>💡 Portfolio Career Model:</strong>
+                        Most sustainable music careers combine 3-5 revenue streams. Don't expect to live off streaming alone. Think: 40% teaching, 30% live performance, 20% session work, 10% streaming/merch.
+                    </div>
+                </div>
+            </div>
+            
+            <div class="action-bar">
+                <button class="btn btn-primary" onclick="saveCanvas()">
+                    <span>💾</span> Save as PDF
+                </button>
+                <button class="btn btn-secondary" onclick="exportText()">
+                    <span>📄</span> Copy All Text
+                </button>
+                <button class="btn btn-secondary" onclick="printCanvas()">
+                    <span>🖨️</span> Print
+                </button>
+                <button class="btn btn-danger" onclick="clearCanvas()">
+                    <span>🔄</span> Clear All
+                </button>
+            </div>
+        </div>
+    </div>
+    
+    <div class="save-indicator" id="saveIndicator">
+        <span>✓</span> Saved to Browser
+    </div>
+    
+    <script>
+        // Auto-save functionality
+        const fields = [
+            'key-partners', 'key-activities', 'value-propositions',
+            'customer-relationships', 'customer-segments', 'key-resources',
+            'channels', 'cost-structure', 'revenue-streams'
+        ];
+        
+        // Load saved data on page load
+        window.addEventListener('load', function() {
+            fields.forEach(field => {
+                const saved = localStorage.getItem(`bmc_music_${field}`);
+                if (saved) {
+                    document.getElementById(field).value = saved;
+                }
+            });
+        });
+        
+        // Auto-save every 30 seconds
+        setInterval(autoSave, 30000);
+        
+        // Also save on input (debounced)
+        let saveTimeout;
+        fields.forEach(field => {
+            document.getElementById(field).addEventListener('input', function() {
+                clearTimeout(saveTimeout);
+                saveTimeout = setTimeout(autoSave, 2000);
+            });
+        });
+        
+        function autoSave() {
+            fields.forEach(field => {
+                localStorage.setItem(`bmc_music_${field}`, document.getElementById(field).value);
+            });
+            showSaveIndicator();
+        }
+        
+        function showSaveIndicator() {
+            const indicator = document.getElementById('saveIndicator');
+            indicator.classList.add('show');
+            setTimeout(() => {
+                indicator.classList.remove('show');
+            }, 2500);
+        }
+        
+        function saveCanvas() {
+            autoSave();
+            alert('💾 To save as PDF:\n\n1. Press Ctrl+P (Windows) or Cmd+P (Mac)\n2. Select "Save as PDF" as the printer\n3. Adjust margins to "None" for best fit\n4. Click Save\n\nYour Music Career Business Model Canvas will be saved as a PDF file.');
+            window.print();
+        }
+        
+        function exportText() {
+            let text = 'MUSIC CAREER BUSINESS MODEL CANVAS\n';
+            text += '='.repeat(60) + '\n\n';
+            
+            const sections = [
+                { id: 'value-propositions', title: '⭐ VALUE PROPOSITIONS (Your Unique Offering)' },
+                { id: 'customer-segments', title: '👥 CUSTOMER SEGMENTS (Who You Serve)' },
+                { id: 'customer-relationships', title: '💬 CUSTOMER RELATIONSHIPS (How You Engage)' },
+                { id: 'channels', title: '📢 CHANNELS (How You Reach People)' },
+                { id: 'revenue-streams', title: '💵 REVENUE STREAMS (How You Make Money)' },
+                { id: 'key-activities', title: '⚡ KEY ACTIVITIES (What You Must Do)' },
+                { id: 'key-resources', title: '🔧 KEY RESOURCES (What You Need)' },
+                { id: 'key-partners', title: '🤝 KEY PARTNERS (Who Helps You)' },
+                { id: 'cost-structure', title: '💰 COST STRUCTURE (What It Costs)' }
+            ];
+            
+            sections.forEach(section => {
+                const content = document.getElementById(section.id).value;
+                if (content.trim()) {
+                    text += section.title + '\n';
+                    text += '-'.repeat(60) + '\n';
+                    text += content + '\n\n';
+                }
+            });
+            
+            navigator.clipboard.writeText(text).then(() => {
+                alert('✅ Your Music Career Business Model Canvas has been copied to clipboard!\n\nYou can now paste it into any document, email, or Google Doc.');
+            }).catch(() => {
+                alert('❌ Unable to copy to clipboard. Please use the Print/PDF option instead.');
+            });
+        }
+        
+        function printCanvas() {
+            autoSave();
+            window.print();
+        }
+        
+        function clearCanvas() {
+            if (confirm('⚠️ Are you sure you want to clear ALL content?\n\nThis will delete all your work from the canvas and cannot be undone.\n\nConsider saving as PDF first!')) {
+                if (confirm('Really clear everything? This is your last chance to back out!')) {
+                    fields.forEach(field => {
+                        document.getElementById(field).value = '';
+                        localStorage.removeItem(`bmc_music_${field}`);
+                    });
+                    alert('✓ Canvas cleared! Start fresh with your music career business model.');
+                }
+            }
+        }
+        
+        // Warn before leaving if there's unsaved work
+        window.addEventListener('beforeunload', function(e) {
+            const hasContent = fields.some(field => 
+                document.getElementById(field).value.trim().length > 0
+            );
+            if (hasContent) {
+                autoSave();
+            }
+        });
+    </script>
+</body>
+</html>
